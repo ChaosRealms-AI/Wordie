@@ -1,0 +1,400 @@
+/* 基础样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #121212; /* 暗黑模式背景色 */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 添加PWA支持 */
+@media all and (display-mode: standalone) {
+  body {
+    background-color: #121212; /* 暗黑模式背景色 */
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+}
+
+/* 卡片样式 */
+.card {
+  background: #1e1e1e; /* 暗黑模式卡片背景色 */
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  position: relative;
+  /* 固定最大白框的大小 */
+  width: 600px;
+  height: auto;
+}
+
+/* 状态指示器 */
+.status-indicator {
+  position: static;
+  display: inline-block;
+  margin-bottom: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-right: 8px;
+}
+
+.status-indicator.new {
+  background: #4ecdc4;
+  color: white;
+}
+
+.status-indicator.reviewing {
+  background: #ff6b6b;
+  color: white;
+}
+
+.status-indicator.mastered {
+  background: #51cf66;
+  color: white;
+}
+
+/* 单词和翻译布局 */
+.word-translation-container {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.word {
+  font-size: 3rem;
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+  margin-top: 1rem;
+}
+
+.word2 {
+  font-size: 2rem;
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+  margin-top: 1rem;
+}
+
+.idiom {
+  font-size: 1.5rem;
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+  margin-top: 1rem;
+}
+
+.translation {
+  font-size: 1rem;
+  color: rgba(224, 224, 224, 0.92); /* 暗黑模式文字颜色 */
+}
+
+/* 调整单词翻译格式，中文和英文分行显示 */
+.word-translation-container .translation {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-translation-container {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.example {
+  font-size: 2rem;
+  color: #a0a0a0; /* 暗黑模式文字颜色 */
+  line-height: 1.6;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.example-translation {
+  margin-top: 5px; /* 可以根据需要调整例句和翻译之间的间距 */
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+}
+
+.example:hover {
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+
+}
+
+.play-icon {
+  margin-left: 10px;
+  margin-left: 10px;
+  font-size: 0.8em;
+}
+
+/* 按钮组紧凑布局 */
+.button-group-compact {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* 统一按钮样式 */
+.btn,
+.translate-btn,
+.retry-btn,
+.review-btn {
+  background: #222222; /* 暗黑模式按钮背景色 */
+  color: #e0e0e0; /* 暗黑模式按钮文字颜色 */
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover,
+.translate-btn:hover,
+.retry-btn:hover,
+.review-btn:hover {
+  background: #333333; /* 暗黑模式按钮悬停背景色 */
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 状态统计样式 */
+.status-stats-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.stats-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-item {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+}
+
+/* 加载动画 */
+.loading {
+  text-align: center;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #222222; /* 暗黑模式加载动画边框颜色 */
+  border-top: 4px solid #4ecdc4;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 错误提示 */
+.error-box {
+  background: #2e0e0e; /* 暗黑模式错误提示背景色 */
+  color: #ff4444;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* 完成状态 */
+.complete-box {
+  text-align: center;
+  padding: 2rem;
+}
+
+.status-indicator.custom-status {
+  padding: 0.2em 0.6em;
+  border-radius: 4px;
+  margin-right: 10px;
+  background-color: #646cff;
+  color: white;
+}
+
+.status-stats-container {
+  display: -webkit-flex; /* Safari 支持 */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #ff4444;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(255, 68, 68, 0.2);
+}
+
+.play-icon {
+  cursor: pointer;
+  margin-left: 8px;
+  transition: transform 0.2s;
+}
+
+.play-icon:hover {
+  transform: scale(1.1);
+}
+
+/* 保持原有其他样式不变 */
+.master-button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.card {
+  position: relative;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  position: relative;
+  width: 80%;
+  height: 80%;
+  background-color: #1e1e1e; /* 暗黑模式弹窗背景色 */
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+}
+
+.example-container {
+  margin-bottom: 10px; /* 可以根据需要调整例句之间的间距 */
+}
+
+
+
+.idiom-bold-smaller {
+  font-weight: bold; /* 字体加粗 */
+  font-size: 1.5em; /* 字体大小设为比默认小一号，可按需调整 */
+  color: #e0e0e0; /* 暗黑模式文字颜色 */
+}
+
+.fixed-master-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.split-screen-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  flex: 1;
+  height: 100%;
+}
+
+.right-panel {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.left-button-group {
+  position: fixed; /* 固定位置 */
+  bottom: 50%; /* 距离顶部 20px */
+  left: 20px; /* 距离左侧 20px */
+  display: flex; /* 使用 flexbox 布局 */
+  flex-direction: row; /* 水平排列按钮 */
+  gap: 10px; /* 按钮之间的间距 */
+  z-index: 1000; /* 确保按钮组显示在其他元素之上 */
+}
+
+.right-button-group {
+  position: fixed; /* 固定位置 */
+  bottom: 50%; /* 距离顶部 20px */
+  right: 20px; /* 距离左侧 20px */
+  display: flex; /* 使用 flexbox 布局 */
+  flex-direction: row; /* 水平排列按钮 */
+  gap: 10px; /* 按钮之间的间距 */
+  z-index: 1000; /* 确保按钮组显示在其他元素之上 */
+}
+
+.left-button-group2 {
+  position: fixed; /* 固定位置 */
+  bottom: 20px; /* 距离顶部 20px */
+  left: 20px; /* 距离左侧 20px */
+  display: flex; /* 使用 flexbox 布局 */
+  flex-direction: row; /* 水平排列按钮 */
+  gap: 10px; /* 按钮之间的间距 */
+  z-index: 1000; /* 确保按钮组显示在其他元素之上 */
+}
+
+.left-button-group3 {
+  position: fixed; /* 固定位置 */
+  top: 20px; /* 距离顶部 20px */
+  left: 20px; /* 距离左侧 20px */
+  display: flex; /* 使用 flexbox 布局 */
+  flex-direction: row; /* 水平排列按钮 */
+  gap: 10px; /* 按钮之间的间距 */
+  z-index: 1000; /* 确保按钮组显示在其他元素之上 */
+}
+
+.left-button-group4 {
+  position: fixed; /* 固定位置 */
+  bottom: 100px; /* 距离顶部 20px */
+  left: 20px; /* 距离左侧 20px */
+  display: flex; /* 使用 flexbox 布局 */
+  flex-direction: row; /* 水平排列按钮 */
+  gap: 10px; /* 按钮之间的间距 */
+  z-index: 1000; /* 确保按钮组显示在其他元素之上 */
+}
+
+.stats-container {
+  position: absolute;
+  top: 80px;        /* 修改为顶部距离 */
+  right: 20px;      /* 添加右侧距离 */
+  bottom: auto;     /* 移除底部距离 */
+  left: auto;       /* 移除左侧距离 */
+  background-color: rgba(0, 0, 0, 0.8); /* 黑色背景 */
+  color: white;     /* 白色文字 */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.stats-container p {
+  margin: 5px 0;
+  font-size: 14px;
+}
