@@ -26,4 +26,4 @@ echo "💡 按 Ctrl+C 停止所有服务"
 trap 'echo "🛑 正在停止服务..."; kill $BACKEND_PID $FRONTEND_PID 2>/dev/null; echo "✅ 服务已停止"; exit 0' INT
 
 # 保持脚本运行
-wait 
+wait ·
